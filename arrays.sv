@@ -21,8 +21,8 @@
 
 
 module arrays(
-    input clk
     );
+    //Method 1
     logic [1:0] modmem[0:256];
     always_comb begin
     integer i;
@@ -35,4 +35,11 @@ module arrays(
             value = 0;
    end
    end
+   //Method 2 (Only one that symbiflow can accept
+   reg[1:0] modmem[256];
+initial
+$readmemh("text.txt",modmem);
+//Method 3
+integer i;
+    logic[1:0] modmem[3] = '{0,1,2};
     endmodule
